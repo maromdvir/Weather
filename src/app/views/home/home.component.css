@@ -1,0 +1,13 @@
+.weather-text{
+    font-size: calc(20px + 5.5vw);
+}
+
+locations-autocomplete{
+    width: 50%;
+}
+
+.home-view-error{
+    font-size: calc(20px + 5.5vw);
+    color: red;
+    
+}

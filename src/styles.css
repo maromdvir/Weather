@@ -1,0 +1,40 @@
+.background{
+    height: 100vh;
+    width: 100%;
+    background: url('./assets/images/background.jpg') no-repeat;
+    background-size: cover;
+    overflow: auto;
+
+}
+
+#mat-autocomplete-0{
+    background-color: #dfe8f7;
+}
+
+.bg-light {
+    background-color: #dfe8f7!important;
+}
+
+
+.vh-25{
+    height: 25vh;
+}
+
+.minw-100{
+    min-width: 100px;
+}
+
+.minw-130{
+    min-width: 130px;
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+.minw-200{
+    min-width: 180px;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

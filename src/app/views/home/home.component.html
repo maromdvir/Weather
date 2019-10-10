@@ -1,0 +1,37 @@
+<div class="contianer" *ngIf="displayedLocation && fiveDaysForecasts">
+    <div class="row m-auto justify-content-center">
+        <locations-autocomplete></locations-autocomplete>
+    </div>
+    <div class="row justify-content-between m-auto">
+        <div *ngIf="displayedLocation && displayedLocation.currentWeather"
+              class="col-4 p-3 col-sm-3 col-lg-2
+                    bg-light rounded text-center p-2">
+            <span>{{ displayedLocation.name }}</span>
+            <br>
+            <span class="mt-2">{{ displayedLocation.currentWeather.temperature.metric.value }}&#8451;</span>
+        </div>
+        <div *ngIf="displayedLocation"
+             class="col-4 col-sm-3 col-md-2 p-0">
+            <button type="button" class="btn btn-light float-right"
+                (click)="addFavoriteLocation()">
+                Add to favorites
+            </button>
+        </div>
+    </div>
+    <div *ngIf="displayedLocation && displayedLocation.currentWeather"
+         class="row vh-25 mt-4 ml-auto weather-text 
+                mr-auto justify-content-center font-weight-bold">
+            {{ displayedLocation.currentWeather.weatherText }}
+    </div>
+    
+    <fiveDaysForecasts *ngIf="fiveDaysForecasts"
+        [fiveDaysForecasts]="fiveDaysForecasts"
+    ></fiveDaysForecasts>
+
+
+</div>
+
+<div class="home-view-error text-center font-weight-bold"
+    *ngIf="!displayedLocation || !fiveDaysForecasts">
+    Somthing went wrong please try again later 
+</div>

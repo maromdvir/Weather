@@ -1,0 +1,9 @@
+
+
+mat-form-field{
+    width: 100%;
+}
+
+:host >>> .mat-form-field-appearance-legacy .mat-form-field-underline{
+    height: 3px;
+}
