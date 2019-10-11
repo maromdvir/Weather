@@ -19,12 +19,16 @@ export class HomeComponent implements OnInit, OnDestroy {
   displayedLocation: Location;
   fiveDaysForecasts: Forecasts[];
   subscriptions: Subscription[];
+  hasError: boolean;
+  isLoading: boolean;
+
 
   constructor(private store: Store<AppState>, private weatherService: WeatherService) { }
 
   ngOnInit() {
-
+    this.hasError = false;
     this.subscriptions = [];
+    this.isLoading = true;
     this.subscriptions.push(
       this.store.select("displayedLocation")
         .subscribe(location => {
@@ -38,16 +42,29 @@ export class HomeComponent implements OnInit, OnDestroy {
                   this.weatherService.getFiveDaysForecasts(this.displayedLocation.id)
                     .subscribe(forecasts => {
                       this.fiveDaysForecasts = forecasts;
+                      this.isLoading = false;
                     },
-                      err => console.log(err)
+                      err => {
+                        console.log(err);
+                        this.isLoading = false;
+                        this.hasError = true;
+                      }
                     )
                 );
               },
-                err => console.log(err)
+                err => {
+                  console.log(err);
+                  this.isLoading = false;
+                  this.hasError = true;
+                }
               )
           );
         },
-          err => console.log(err)
+          err => {
+            console.log(err);
+            this.isLoading = false;
+            this.hasError = true;
+          }
         )
     );
   }
